@@ -1,4 +1,4 @@
-Atlas NLP Kiti
+<b>Atlas NLP Kiti
 
 N11'den mağaza hakkındaki yorumları çekip analiz edip mağaza hakkında bilgi sahibi olmamızı sağlayan bir NLP kitidir.
 
