@@ -1,9 +1,9 @@
-<b>Atlas NLP Kiti
+<b><b>Atlas NLP Kiti
 
 N11'den mağaza hakkındaki yorumları çekip analiz edip mağaza hakkında bilgi sahibi olmamızı sağlayan bir NLP kitidir.
 
 
-Başlarken 
+<b>Başlarken 
 
 Zemberek'in çalışması için JPype1 kütüphanesini ve requirements.txt deki kütüphaneleri yüklemelisiniz.
 
