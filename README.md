@@ -35,9 +35,9 @@ Proje geliştirilmesi için aksiyonlar kısmından yapılacakları takip edebili
     
 ## Ekip
 
-- Nurhak ALTIN
-- Bahadır Can
-- Mert Humoğlu
+- Nurhak ALTIN @Nurhak
+- Bahadır Can @canbahadir
+- Mert Humoğlu @mhumoglu
 
 ## Lisans
 
