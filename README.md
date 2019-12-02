@@ -1,5 +1,10 @@
 # ATLAS
 
+<p align="center">
+  <img width="460" height="300" src="data/atlas_logo.png?raw=true">
+</p>
+
+
 E-ticaret sitelerinde yapılan yorumların olumlu, olumsuz veya etkisiz olduğunu tespit etmek için kullanılan bir araçtır.
 
 Proje Türkiye Açık Kaynak Platformu acikhack etkilğinde geliştirilmeye başlanmıştır.
