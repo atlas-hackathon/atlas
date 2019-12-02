@@ -292,6 +292,7 @@ class AtlasFormatter:
         comments = AtlasFormatter.get_comments(file)
         scores = AtlasFormatter.get_scores(file)
         final = []
+        final.append("Comment|Score\n")
         for i, comment in enumerate(comments):
             if comment.__len__() > 1:
                 commentwords = comment.split()
@@ -299,7 +300,7 @@ class AtlasFormatter:
                 result = ' '.join(resultwords)
                 final.append(result.strip("\n") + "|" + str(format(scores[i], ".2f") + "\n"))
 
-        AtlasFormatter.list_to_file(final, "removed_frequent_words.csv")
+        AtlasFormatter.list_to_file(final, str(file).split(".csv")[0]+"_removed_stopwords.csv")
 
     @staticmethod
     def sortSecond(val):

@@ -10,10 +10,13 @@ import emoji
 
 TAG_RE = re.compile(r'<[^>]+>')
 
-#Gelen html verisi içinden tagları tamamen temizliyor
+
+# Gelen html verisi içinden tagları tamamen temizliyor
 def remove_tags(text):
     return TAG_RE.sub('', text)
-#Müşterinin seçtiği emojiye göre gerekli puanlamayı yapmamızı sağlıyor
+
+
+# Müşterinin seçtiği emojiye göre gerekli puanlamayı yapmamızı sağlıyor
 def icon_val(icon_str):
     if icon_str.find("iconPosSmly")!=-1:
         return 1
@@ -21,7 +24,9 @@ def icon_val(icon_str):
         return -1
 
     return 0
-#Siteye Http isteğinde bulunduğumuz fonksiyon
+
+
+# Siteye Http isteğinde bulunduğumuz fonksiyon
 def httpistek(url, delay_time):
     try:
         user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0'
@@ -29,17 +34,18 @@ def httpistek(url, delay_time):
 
         response = urllib.request.urlopen(request)
         html = response.read()
-        #Güvenlik duvarına yakalanmamak için her response dönüşü bekliyoruz
+        # Güvenlik duvarına yakalanmamak için her response dönüşü bekliyoruz
         time.sleep(delay_time)
         response.close()
         return html
     except:
-        #Engellenme durumunda engelin kalkmasını bekliyoruz
+        # Engellenme durumunda engelin kalkmasını bekliyoruz
         print(sys.exc_info()[1])
         if str(sys.exc_info()[1]).find("429") != -1:
             time.sleep(120)
             return 0
         return -1
+
 
 def veri_temizle(veri):
     veri = re.sub(r'[.]{4,}', ' ... ', veri)
@@ -47,13 +53,14 @@ def veri_temizle(veri):
     veri = re.sub(r'xa0', '', veri)
     veri = re.sub(r'[^\w,.:;\s]', '', veri)
     veri=veri.replace("\n", "").lstrip().rstrip()
-    return  veri
+    return veri
+
 
 def ekle_with_harf():
     print("Seçilecek Harfi Giriniz...(A, B, C, Ç, D, E, F, G, H, I, İ, J, K, L, M, N, O, Ö, P, Q, R, S, Ş, T, U, Ü, X, V, W, Y, Z, 1, 2, 3,4, 5, 6, 7, 8, 9, 0)")
     x=input()
     print(("İşleme Başlanıyor...."))
-    #mağazanın adını alıyoruz
+    # mağazanın adını alıyoruz
     veri = httpistek("https://www.n11.com/magazalar/" + x, 1)
     deg = re.findall("href=\"https://www.n11.com/magaza/(.*?)\"", str(veri).replace("\r\n", ""))
     try:
@@ -63,7 +70,7 @@ def ekle_with_harf():
     print(("İşleme Başlandı"))
     for _ in deg:
         comm = httpistek("https://www.n11.com/magaza/" + _ + "/magaza-yorumlari", 5).decode('utf-8')
-        #ürünleri daha rahat çekebilmek için satıcının idsini alıyoruz
+        # ürünleri daha rahat çekebilmek için satıcının idsini alıyoruz
         sellerid = re.findall("<input type=\"hidden\" id=\"sellerId\" value=\"(.*?)\"/>", comm)
         count = 2
         with open("raw_data/" + x + "/" + _ + ".csv", "a") as f:
@@ -86,9 +93,9 @@ def ekle_with_harf():
                 # data=([isim[0],(icon_val(de[0])+icon_val(de[1])+icon_val(de[2]))/3,yorum.replace("\n", "").lstrip().rstrip()])
                 try:
                     with open("raw_data/" + x + "/" + _ + ".csv", "a") as f:
-                        #veri temizleme işlemi yapıyoruz
+                        # veri temizleme işlemi yapıyoruz
                         try:
-                            yorum=veri_temizle(yorum)
+                            yorum = veri_temizle(yorum)
                         except:
                             pass
                         print(remove_tags(emoji.demojize(html.unescape(str(
@@ -130,7 +137,7 @@ def ekle_with_link():
     comm = httpistek("https://www.n11.com/magaza/" + _ + "/magaza-yorumlari", 5).decode('utf-8')
     sellerid = re.findall("<input type=\"hidden\" id=\"sellerId\" value=\"(.*?)\"/>", comm)
     count = 2
-    with open("raw_data/" + harf + "/" + _ + ".csv", "w",encoding=utf-8) as f:
+    with open("raw_data/" + harf + "/" + _ + ".csv", "w", encoding="utf-8") as f:
         f.write("Comment|Score\n")
     f.close()
 
@@ -213,7 +220,7 @@ def ekle():
                     yorum = str(comm)[:str(comm).find("</p>")]
                     #data=([isim[0],(icon_val(de[0])+icon_val(de[1])+icon_val(de[2]))/3,yorum.replace("\n", "").lstrip().rstrip()])
                     try:
-                        with open("raw_data/" + harf + "/" + _ + ".csv", "a",encoding=utf-8) as f:
+                        with open("raw_data/" + harf + "/" + _ + ".csv", "a", encoding="utf-8") as f:
                             try:
                                 yorum = veri_temizle(yorum)
                             except:

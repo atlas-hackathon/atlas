@@ -1,34 +1,42 @@
-Atlas NLP Kiti
+# ATLAS
 
-N11'den mağaza hakkındaki yorumları çekip analiz edip mağaza hakkında bilgi sahibi olmamızı sağlayan bir NLP kitidir.
+E-ticaret sitelerinde yapılan yorumların olumlu, olumsuz veya etkisiz olduğunu tespit etmek için kullanılan bir araçtır.
 
+Proje Türkiye Açık Kaynak Platformu acikhack etkilğinde geliştirilmeye başlanmıştır.
 
-<b>Başlarken 
+Proje geliştirilmesi için aksiyonlar kısmından yapılacakları takip edebilirsiniz. 
 
-Zemberek'in çalışması için JPype1 kütüphanesini ve requirements.txt deki kütüphaneleri yüklemelisiniz.
+> **Not**: *Her türlü geliştirmeye açığız.*
 
-JPype1 için;
-	1-pip install JPype1
-	2-" [Zemberek"](https://drive.google.com/drive/folders/0B9TrB39LQKZWSjNKdVcwWUxxUm8?usp=sharing"Zemberek") linkteki dataları gerekli klsöre indirin
+## Kurulum
 
-+-- bin
-|   +-- zemberek-full.jar
-+-- data
-|   +-- classification
-|       +-- news-title-category-set
-|       +-- news-title-category-set.lemmas
-|       +-- news-title-category-set.tokenized
-|   +-- dictionaries
-|   +-- lm
-|       +-- lm.2gram.slm
-|   +-- ner
-|   +-- normalization
-|       +-- ascii-map
-|       +-- lookup-from-graph
-|       +-- split
-+-- examples
-.gitignore
-LICENSE
-README.md
- 
+1. Git reposunu klonlayın:
+
+    - `git clone https://github.com/atlas-hackathon/atlas.git`
+    
+2. Virtualenv oluşturun
+
+    - `virtualenv -p <python3 binary path> venv`
+    - `source venv/bin/activate`
+
+2. Gerekli olan paketleri yükleyin.
+
+    - `pip install -r requirements.txt`
+    
+3. Çalıştığından emin olmak için:
+
+    - `python examples/prepare_data.py`
+    - `python examples/prepare_data.py`
+    
+## Ekip
+
+- Nurhak ALTIN
+- Bahadır Can
+- Mert Humoğlu
+
+## Lisans
+
+MIT License
+
+Copyright (c) 2019 atlas
 
