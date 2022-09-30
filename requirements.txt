@@ -1,7 +1,7 @@
 beautifulsoup4==4.8.1
 emoji==0.5.4
 google==2.0.2
-joblib==0.14.0
+joblib==1.2.0
 JPype1==0.7.0
 numpy==1.17.4
 pandas==0.25.3
